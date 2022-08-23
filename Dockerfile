@@ -1,5 +1,5 @@
-# 基础镜像 Node 版本为12
-FROM node:12 as base
+# 基础镜像 Node 版本为18
+FROM node:18 as base
 # 设置工作目录，对RUN,CMD,ENTRYPOINT,COPY,ADD生效。如果不存在则会创建，也可以设置多次。
 # 在一台机器中，用这个镜像创建一个容器时，相对于这台机器的根目录下面的src文件夹
 WORKDIR /src
@@ -16,7 +16,7 @@ FROM base as dev
 # 设置development 环境
 ENV NODE_ENV=development
 # RUN指令在构建时将会生成一个新的镜像层，并且执行RUN指令后面的内容
-RUN npm install
+# RUN npm install
 # COPY 命令 指从外部往容器内添加文件。但是COPY指令只支持基本的文件和文件夹拷贝功能
 COPY . .
 # 和RUN命令相似，CMD可以用于执行特定的命令。

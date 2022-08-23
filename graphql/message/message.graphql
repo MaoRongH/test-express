@@ -1,0 +1,23 @@
+input CreateMessageInput {
+    title: String!
+    content: String
+    channel: Int!
+}
+
+type Message {
+    id: Int
+    title: String!
+    content: String
+    channel: Int!
+    createdAt: String
+}
+
+type CreateMessageRes {
+    code: Int!
+    msg: String
+    data: Message
+}
+
+type Mutation {
+  CreateMessage(message: CreateMessageInput): CreateMessageRes
+}

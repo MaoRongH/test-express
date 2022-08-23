@@ -1,0 +1,44 @@
+type Channel {
+  id: Int
+  name: String!
+}
+
+type findAndCountAll {
+  row: [Channel]
+  count: Int
+}
+
+type ChannelAndMessage {
+  channel: Channel
+  message: MessageData
+}
+
+type MessageData {
+  data: [Message]
+  count: Int
+  page: Int
+}
+
+type GetChannel {
+  data: [ChannelAndMessage]
+  count: Int
+  page: Int
+  code: Int
+  msg: String
+}
+
+type Query {
+  GetChannel(id: Int, name: String, page: Int, limit:Int,message_page:Int,message_limit:Int, order: String, order_type:String): GetChannel
+}
+
+
+
+type CreateChannelRes {
+  code: Int!
+  msg: String
+  data: Channel
+}
+
+type Mutation {
+  CreateChannel(name: String!): CreateChannelRes
+}
